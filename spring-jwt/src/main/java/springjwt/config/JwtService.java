@@ -1,4 +1,4 @@
-package springjwt.service;
+package springjwt.config;
 
 import io.jsonwebtoken.Claims;
 import io.jsonwebtoken.Jwts;
