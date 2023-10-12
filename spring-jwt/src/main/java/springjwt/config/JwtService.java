@@ -44,10 +44,7 @@ public class JwtService {
                 .parseClaimsJwt(token)
                 .getBody();
     }
-    private Key getSignInKey() {
-        byte[] keyBytes= Decoders.BASE64.decode(secretKey);
-        return  Keys.hmacShaKeyFor(keyBytes);
-    }
+
 
     public  String generateToken(UserDetails userDetails)
     {
@@ -87,5 +84,9 @@ public class JwtService {
 
     private Date extractExpiration(String token) {
         return extractClaim(token, Claims::getExpiration);
+    }
+    private Key getSignInKey() {
+        byte[] keyBytes= Decoders.BASE64.decode(secretKey);
+        return  Keys.hmacShaKeyFor(keyBytes);
     }
 }
