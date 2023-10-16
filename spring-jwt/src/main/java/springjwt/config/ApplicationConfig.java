@@ -1,6 +1,6 @@
 package springjwt.config;
 
-import lombok.RequiredArgsConstructor;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.security.authentication.AuthenticationManager;
@@ -14,10 +14,16 @@ import org.springframework.security.crypto.password.PasswordEncoder;
 import springjwt.repository.UserRepository;
 
 @Configuration
-@RequiredArgsConstructor
 public class ApplicationConfig {
 
-    private  UserRepository repository;
+    private final UserRepository repository;
+
+    public ApplicationConfig(UserRepository repository) {
+        this.repository = repository;
+    }
+
+    @Autowired
+
 
     @Bean
     public UserDetailsService userDetailsService() {
